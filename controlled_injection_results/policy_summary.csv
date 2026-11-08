@@ -1,0 +1,109 @@
+test,pattern,size,windows,crossed,policy,detected,delay_min,delay_max
+threshold_crossing,1-minute spike,just over threshold,all placed,all placed,immediate,all,0,0
+threshold_crossing,1-minute spike,just over threshold,all placed,all placed,continuous20,none,,
+threshold_crossing,1-minute spike,just over threshold,all placed,all placed,continuous30,none,,
+threshold_crossing,1-minute spike,just over threshold,all placed,all placed,20of30,none,,
+threshold_crossing,5-minute spike,just over threshold,all placed,all placed,immediate,all,0,0
+threshold_crossing,5-minute spike,just over threshold,all placed,all placed,continuous20,none,,
+threshold_crossing,5-minute spike,just over threshold,all placed,all placed,continuous30,none,,
+threshold_crossing,5-minute spike,just over threshold,all placed,all placed,20of30,none,,
+threshold_crossing,10 continuous minutes,just over threshold,all placed,all placed,immediate,all,0,0
+threshold_crossing,10 continuous minutes,just over threshold,all placed,all placed,continuous20,none,,
+threshold_crossing,10 continuous minutes,just over threshold,all placed,all placed,continuous30,none,,
+threshold_crossing,10 continuous minutes,just over threshold,all placed,all placed,20of30,none,,
+threshold_crossing,20 continuous minutes,just over threshold,all placed,all placed,immediate,all,0,0
+threshold_crossing,20 continuous minutes,just over threshold,all placed,all placed,continuous20,all,19,19
+threshold_crossing,20 continuous minutes,just over threshold,all placed,all placed,continuous30,none,,
+threshold_crossing,20 continuous minutes,just over threshold,all placed,all placed,20of30,all,19,19
+threshold_crossing,25 continuous minutes,just over threshold,all placed,all placed,immediate,all,0,0
+threshold_crossing,25 continuous minutes,just over threshold,all placed,all placed,continuous20,all,19,19
+threshold_crossing,25 continuous minutes,just over threshold,all placed,all placed,continuous30,none,,
+threshold_crossing,25 continuous minutes,just over threshold,all placed,all placed,20of30,all,19,19
+threshold_crossing,30 continuous minutes,just over threshold,all placed,all placed,immediate,all,0,0
+threshold_crossing,30 continuous minutes,just over threshold,all placed,all placed,continuous20,all,19,19
+threshold_crossing,30 continuous minutes,just over threshold,all placed,all placed,continuous30,all,29,29
+threshold_crossing,30 continuous minutes,just over threshold,all placed,all placed,20of30,all,19,19
+threshold_crossing,60 continuous minutes,just over threshold,all placed,all placed,immediate,all,0,0
+threshold_crossing,60 continuous minutes,just over threshold,all placed,all placed,continuous20,all,19,19
+threshold_crossing,60 continuous minutes,just over threshold,all placed,all placed,continuous30,all,29,29
+threshold_crossing,60 continuous minutes,just over threshold,all placed,all placed,20of30,all,19,19
+threshold_crossing,"19 on, 1 off, 19 on",just over threshold,all placed,all placed,immediate,all,0,0
+threshold_crossing,"19 on, 1 off, 19 on",just over threshold,all placed,all placed,continuous20,none,,
+threshold_crossing,"19 on, 1 off, 19 on",just over threshold,all placed,all placed,continuous30,none,,
+threshold_crossing,"19 on, 1 off, 19 on",just over threshold,all placed,all placed,20of30,all,20,20
+threshold_crossing,"10 on, 5 off, 10 on",just over threshold,all placed,all placed,immediate,all,0,0
+threshold_crossing,"10 on, 5 off, 10 on",just over threshold,all placed,all placed,continuous20,none,,
+threshold_crossing,"10 on, 5 off, 10 on",just over threshold,all placed,all placed,continuous30,none,,
+threshold_crossing,"10 on, 5 off, 10 on",just over threshold,all placed,all placed,20of30,all,24,24
+threshold_crossing,2 on / 1 off for 30 minutes,just over threshold,all placed,all placed,immediate,all,0,0
+threshold_crossing,2 on / 1 off for 30 minutes,just over threshold,all placed,all placed,continuous20,none,,
+threshold_crossing,2 on / 1 off for 30 minutes,just over threshold,all placed,all placed,continuous30,none,,
+threshold_crossing,2 on / 1 off for 30 minutes,just over threshold,all placed,all placed,20of30,all,28,28
+threshold_crossing,3 on / 3 off pulses,just over threshold,all placed,all placed,immediate,all,0,0
+threshold_crossing,3 on / 3 off pulses,just over threshold,all placed,all placed,continuous20,none,,
+threshold_crossing,3 on / 3 off pulses,just over threshold,all placed,all placed,continuous30,none,,
+threshold_crossing,3 on / 3 off pulses,just over threshold,all placed,all placed,20of30,none,,
+threshold_crossing,5 on / 10 off cycles,just over threshold,all placed,all placed,immediate,all,0,0
+threshold_crossing,5 on / 10 off cycles,just over threshold,all placed,all placed,continuous20,none,,
+threshold_crossing,5 on / 10 off cycles,just over threshold,all placed,all placed,continuous30,none,,
+threshold_crossing,5 on / 10 off cycles,just over threshold,all placed,all placed,20of30,none,,
+fixed_kw,1-minute spike,+1 kW,504,408,immediate,408,0,0
+fixed_kw,1-minute spike,+1 kW,504,408,continuous20,0,,
+fixed_kw,1-minute spike,+1 kW,504,408,continuous30,0,,
+fixed_kw,1-minute spike,+1 kW,504,408,20of30,0,,
+fixed_kw,1-minute spike,+5 kW,504,428,immediate,428,0,0
+fixed_kw,1-minute spike,+5 kW,504,428,continuous20,0,,
+fixed_kw,1-minute spike,+5 kW,504,428,continuous30,0,,
+fixed_kw,1-minute spike,+5 kW,504,428,20of30,0,,
+fixed_kw,1-minute spike,+10 kW,504,430,immediate,430,0,0
+fixed_kw,1-minute spike,+10 kW,504,430,continuous20,0,,
+fixed_kw,1-minute spike,+10 kW,504,430,continuous30,0,,
+fixed_kw,1-minute spike,+10 kW,504,430,20of30,0,,
+fixed_kw,5-minute spike,+1 kW,504,418,immediate,418,0,3
+fixed_kw,5-minute spike,+1 kW,504,418,continuous20,0,,
+fixed_kw,5-minute spike,+1 kW,504,418,continuous30,0,,
+fixed_kw,5-minute spike,+1 kW,504,418,20of30,0,,
+fixed_kw,5-minute spike,+5 kW,504,429,immediate,429,0,3
+fixed_kw,5-minute spike,+5 kW,504,429,continuous20,0,,
+fixed_kw,5-minute spike,+5 kW,504,429,continuous30,0,,
+fixed_kw,5-minute spike,+5 kW,504,429,20of30,0,,
+fixed_kw,5-minute spike,+10 kW,504,433,immediate,433,0,3
+fixed_kw,5-minute spike,+10 kW,504,433,continuous20,0,,
+fixed_kw,5-minute spike,+10 kW,504,433,continuous30,0,,
+fixed_kw,5-minute spike,+10 kW,504,433,20of30,0,,
+fixed_kw,20 continuous minutes,+1 kW,504,420,immediate,420,0,8
+fixed_kw,20 continuous minutes,+1 kW,504,420,continuous20,404,19,19
+fixed_kw,20 continuous minutes,+1 kW,504,420,continuous30,0,,
+fixed_kw,20 continuous minutes,+1 kW,504,420,20of30,404,19,19
+fixed_kw,20 continuous minutes,+5 kW,504,429,immediate,429,0,3
+fixed_kw,20 continuous minutes,+5 kW,504,429,continuous20,427,19,19
+fixed_kw,20 continuous minutes,+5 kW,504,429,continuous30,0,,
+fixed_kw,20 continuous minutes,+5 kW,504,429,20of30,427,19,19
+fixed_kw,20 continuous minutes,+10 kW,504,437,immediate,437,0,18
+fixed_kw,20 continuous minutes,+10 kW,504,437,continuous20,428,19,19
+fixed_kw,20 continuous minutes,+10 kW,504,437,continuous30,0,,
+fixed_kw,20 continuous minutes,+10 kW,504,437,20of30,428,19,19
+fixed_kw,30 continuous minutes,+1 kW,504,423,immediate,423,0,29
+fixed_kw,30 continuous minutes,+1 kW,504,423,continuous20,407,19,28
+fixed_kw,30 continuous minutes,+1 kW,504,423,continuous30,392,29,29
+fixed_kw,30 continuous minutes,+1 kW,504,423,20of30,410,19,27
+fixed_kw,30 continuous minutes,+5 kW,504,431,immediate,431,0,29
+fixed_kw,30 continuous minutes,+5 kW,504,431,continuous20,427,19,19
+fixed_kw,30 continuous minutes,+5 kW,504,431,continuous30,419,29,29
+fixed_kw,30 continuous minutes,+5 kW,504,431,20of30,427,19,19
+fixed_kw,30 continuous minutes,+10 kW,504,439,immediate,439,0,29
+fixed_kw,30 continuous minutes,+10 kW,504,439,continuous20,428,19,19
+fixed_kw,30 continuous minutes,+10 kW,504,439,continuous30,426,29,29
+fixed_kw,30 continuous minutes,+10 kW,504,439,20of30,428,19,19
+fixed_kw,"10 on, 5 off, 10 on",+1 kW,504,422,immediate,422,0,24
+fixed_kw,"10 on, 5 off, 10 on",+1 kW,504,422,continuous20,0,,
+fixed_kw,"10 on, 5 off, 10 on",+1 kW,504,422,continuous30,0,,
+fixed_kw,"10 on, 5 off, 10 on",+1 kW,504,422,20of30,401,24,24
+fixed_kw,"10 on, 5 off, 10 on",+5 kW,504,430,immediate,430,0,22
+fixed_kw,"10 on, 5 off, 10 on",+5 kW,504,430,continuous20,0,,
+fixed_kw,"10 on, 5 off, 10 on",+5 kW,504,430,continuous30,0,,
+fixed_kw,"10 on, 5 off, 10 on",+5 kW,504,430,20of30,426,24,24
+fixed_kw,"10 on, 5 off, 10 on",+10 kW,504,436,immediate,436,0,18
+fixed_kw,"10 on, 5 off, 10 on",+10 kW,504,436,continuous20,0,,
+fixed_kw,"10 on, 5 off, 10 on",+10 kW,504,436,continuous30,0,,
+fixed_kw,"10 on, 5 off, 10 on",+10 kW,504,436,20of30,426,24,24
