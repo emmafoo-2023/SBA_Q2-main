@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Alert methods — detection counts, rates, and delay</title>
+<style>
+  body { font: 14px/1.45 ui-sans-serif, Segoe UI, sans-serif; margin: 28px; color: #1a1a1a; background: #fff; max-width: 1180px; }
+  h1 { font-size: 20px; font-weight: 650; margin: 0 0 8px; }
+  h2 { font-size: 16px; font-weight: 650; margin: 36px 0 8px; border-top: 1px solid #ddd; padding-top: 20px; }
+  h3 { font-size: 13px; font-weight: 650; margin: 16px 0 6px; }
+  p, li { color: #333; font-size: 13px; margin: 0 0 8px; }
+  ul { margin: 0 0 12px; padding-left: 20px; }
+  .box { background: #f6f6f6; border: 1px solid #e0e0e0; padding: 12px 14px; margin: 12px 0 18px; }
+  .box p { margin: 0 0 6px; }
+  .box p:last-child { margin: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0 6px; font-size: 12.5px; }
+  th, td { border: 1px solid #d0d0d0; padding: 5px 7px; text-align: right; white-space: nowrap; }
+  th { background: #f0f0f0; font-weight: 650; text-align: center; vertical-align: bottom; }
+  td.l, th.l { text-align: left; white-space: normal; }
+  tr.tot td { font-weight: 650; background: #f3f3f3; }
+  .miss { color: #666; }
+  .note { color: #555; font-size: 12px; margin: 4px 0 14px; }
+  code { font-size: 12px; background: #f0f0f0; padding: 1px 4px; }
+</style>
+</head>
+<body>
+
+<h1>Floor 3 alert methods — what each method detects, and how long it takes</h1>
+
+<div class="box">
+  <p><strong>What this page is.</strong> Four alert rules were tested on the same Floor 3 power readings (May–September 2019). Known power changes were added in memory. The original CSV was not changed. April was used only to warm up the 28-day baseline. Unchanged windows produced <strong>0 alerts</strong>.</p>
+  <p><strong>What an “alert” means here.</strong> A test window “alerts” if that method fired at least once after the added change. These are controlled sensitivity tests, not confirmed AC faults and not real-world accuracy.</p>
+  <p><strong>What “delay” means.</strong> Minutes from the first minute of the added pattern to the first alert. <code>0</code> = alerted on the same minute the change started (when that minute crossed). A range like <code>0–3</code> means the delay was not the same on every detecting window.</p>
+  <p><strong>What “no alert” means.</strong> That method never fired on that pattern. There is no delay to report.</p>
+</div>
+
+<h3>The four methods</h3>
+<ul>
+  <li><strong>Immediate</strong> — alerts on the first minute above the threshold.</li>
+  <li><strong>Continuous20</strong> — needs 20 uninterrupted minutes above the threshold, then alerts (typical delay 19 min).</li>
+  <li><strong>Continuous30</strong> — needs 30 uninterrupted minutes above the threshold, then alerts (typical delay 29 min).</li>
+  <li><strong>20of30</strong> — needs 20 minutes above the threshold inside some 30-minute window (gaps allowed).</li>
+</ul>
+
+<!-- ========== TABLE A ========== -->
+<h2>Table A — Timing rule only (every scheduled minute forced just past the threshold)</h2>
+<p>This test answers: <em>if every injected minute clearly crosses the threshold, which shapes does each rule catch, and after how many minutes?</em></p>
+<p>Every scheduled minute of the pattern was placed just past the local threshold. Development and validation agreed. High-power and low-power versions agreed. Delay did not vary across windows.</p>
+
+<h3>How to read Table A columns</h3>
+<ul>
+  <li><strong>Pattern</strong> — the shape of the added change (spike, continuous run, or on/off gap pattern).</li>
+  <li><strong>Detected?</strong> — <code>100%</code> = every placed window for that pattern alerted. <code>no alert (0%)</code> = that method never alerted on that pattern.</li>
+  <li><strong>Delay (min)</strong> — minutes from the first injected minute to the first alert. Shown only when there was an alert. <code>no delay</code> = no alert, so delay does not apply.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th class="l" rowspan="2">Pattern</th>
+  <th colspan="2">Immediate</th>
+  <th colspan="2">Continuous20</th>
+  <th colspan="2">Continuous30</th>
+  <th colspan="2">20of30</th>
+</tr>
+<tr>
+  <th>Detected?</th><th>Delay (min)</th>
+  <th>Detected?</th><th>Delay (min)</th>
+  <th>Detected?</th><th>Delay (min)</th>
+  <th>Detected?</th><th>Delay (min)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class="l">1 min spike</td>
+  <td>100%</td><td>0</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+</tr>
+<tr>
+  <td class="l">5 min spike</td>
+  <td>100%</td><td>0</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+</tr>
+<tr>
+  <td class="l">10 min continuous</td>
+  <td>100%</td><td>0</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+</tr>
+<tr>
+  <td class="l">20 min continuous</td>
+  <td>100%</td><td>0</td>
+  <td>100%</td><td>19</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td>100%</td><td>19</td>
+</tr>
+<tr>
+  <td class="l">25 min continuous</td>
+  <td>100%</td><td>0</td>
+  <td>100%</td><td>19</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td>100%</td><td>19</td>
+</tr>
+<tr>
+  <td class="l">30 min continuous</td>
+  <td>100%</td><td>0</td>
+  <td>100%</td><td>19</td>
+  <td>100%</td><td>29</td>
+  <td>100%</td><td>19</td>
+</tr>
+<tr>
+  <td class="l">60 min continuous</td>
+  <td>100%</td><td>0</td>
+  <td>100%</td><td>19</td>
+  <td>100%</td><td>29</td>
+  <td>100%</td><td>19</td>
+</tr>
+<tr>
+  <td class="l">19 on / 1 off / 19 on</td>
+  <td>100%</td><td>0</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td>100%</td><td>20</td>
+</tr>
+<tr>
+  <td class="l">10 on / 5 off / 10 on</td>
+  <td>100%</td><td>0</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td>100%</td><td>24</td>
+</tr>
+<tr>
+  <td class="l">2 on / 1 off × 30 min</td>
+  <td>100%</td><td>0</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td>100%</td><td>28</td>
+</tr>
+<tr>
+  <td class="l">3 on / 3 off</td>
+  <td>100%</td><td>0</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+</tr>
+<tr>
+  <td class="l">5 on / 10 off</td>
+  <td>100%</td><td>0</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+  <td class="miss">no alert (0%)</td><td class="miss">no delay</td>
+</tr>
+<tr class="tot">
+  <td class="l">Patterns detected out of 12</td>
+  <td>12 / 12 (100%)</td><td></td>
+  <td>4 / 12 (33.3%)</td><td></td>
+  <td>2 / 12 (16.7%)</td><td></td>
+  <td>7 / 12 (58.3%)</td><td></td>
+</tr>
+</tbody>
+</table>
+<p class="note">Bottom row: how many of the 12 pattern shapes that method can see at all when every minute crosses. It is not a count of windows.</p>
+
+<!-- ========== TABLE B ========== -->
+<h2>Table B — Fixed size: +1, +5, or +10 kW added to the original reading</h2>
+<p>This test answers: <em>if we add a fixed kilowatt increase to the real reading (not forced past the threshold), how often does each method alert, and how long does it take?</em></p>
+<p>Each row uses the same <strong>504 windows</strong> (252 in May–June + 252 in July–September). A minute only counts if the new reading actually crosses the threshold. Development and validation differed by at most 4 percentage points; counts below pool both periods.</p>
+<p><strong>Total windows in this table:</strong> 5 patterns × 3 sizes × 504 = <strong>7,560</strong>.</p>
+
+<h3>How to read Table B columns</h3>
+<ul>
+  <li><strong>Pattern</strong> — shape of the added change.</li>
+  <li><strong>+kW</strong> — how many kilowatts were added to the original observed power.</li>
+  <li><strong>Crossed / 504</strong> — windows where at least one injected minute went above the threshold. If a window never crosses, every method misses it.</li>
+  <li><strong>Alerts / 504 (%)</strong> — windows that produced an alert for that method, out of 504. <code>0 / 504 (0%) — no alert</code> means that method never fired on that row (even if some windows crossed).</li>
+  <li><strong>Delay (min)</strong> — minutes from the first injected minute to the first alert. A range means delay varied across detecting windows. <code>no delay</code> = no alert on that row.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th class="l" rowspan="2">Pattern</th>
+  <th rowspan="2">+kW</th>
+  <th rowspan="2">Crossed / 504</th>
+  <th colspan="2">Immediate</th>
+  <th colspan="2">Continuous20</th>
+  <th colspan="2">Continuous30</th>
+  <th colspan="2">20of30</th>
+</tr>
+<tr>
+  <th>Alerts / 504 (%)</th><th>Delay (min)</th>
+  <th>Alerts / 504 (%)</th><th>Delay (min)</th>
+  <th>Alerts / 504 (%)</th><th>Delay (min)</th>
+  <th>Alerts / 504 (%)</th><th>Delay (min)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class="l">1 min spike</td><td>1</td><td>408 (81.0%)</td>
+  <td>408 (81.0%)</td><td>0</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+</tr>
+<tr>
+  <td class="l">1 min spike</td><td>5</td><td>428 (84.9%)</td>
+  <td>428 (84.9%)</td><td>0</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+</tr>
+<tr>
+  <td class="l">1 min spike</td><td>10</td><td>430 (85.3%)</td>
+  <td>430 (85.3%)</td><td>0</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+</tr>
+<tr>
+  <td class="l">5 min spike</td><td>1</td><td>418 (82.9%)</td>
+  <td>418 (82.9%)</td><td>0–3</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+</tr>
+<tr>
+  <td class="l">5 min spike</td><td>5</td><td>429 (85.1%)</td>
+  <td>429 (85.1%)</td><td>0–3</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+</tr>
+<tr>
+  <td class="l">5 min spike</td><td>10</td><td>433 (85.9%)</td>
+  <td>433 (85.9%)</td><td>0–3</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+</tr>
+<tr>
+  <td class="l">20 min continuous</td><td>1</td><td>420 (83.3%)</td>
+  <td>420 (83.3%)</td><td>0–8</td>
+  <td>404 (80.2%)</td><td>19</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td>404 (80.2%)</td><td>19</td>
+</tr>
+<tr>
+  <td class="l">20 min continuous</td><td>5</td><td>429 (85.1%)</td>
+  <td>429 (85.1%)</td><td>0–3</td>
+  <td>427 (84.7%)</td><td>19</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td>427 (84.7%)</td><td>19</td>
+</tr>
+<tr>
+  <td class="l">20 min continuous</td><td>10</td><td>437 (86.7%)</td>
+  <td>437 (86.7%)</td><td>0–18</td>
+  <td>428 (84.9%)</td><td>19</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td>428 (84.9%)</td><td>19</td>
+</tr>
+<tr>
+  <td class="l">30 min continuous</td><td>1</td><td>423 (84.0%)</td>
+  <td>423 (84.0%)</td><td>0–29</td>
+  <td>407 (80.8%)</td><td>19–28</td>
+  <td>392 (77.8%)</td><td>29</td>
+  <td>410 (81.3%)</td><td>19–27</td>
+</tr>
+<tr>
+  <td class="l">30 min continuous</td><td>5</td><td>431 (85.5%)</td>
+  <td>431 (85.5%)</td><td>0–29</td>
+  <td>427 (84.7%)</td><td>19</td>
+  <td>419 (83.1%)</td><td>29</td>
+  <td>427 (84.7%)</td><td>19</td>
+</tr>
+<tr>
+  <td class="l">30 min continuous</td><td>10</td><td>439 (87.1%)</td>
+  <td>439 (87.1%)</td><td>0–29</td>
+  <td>428 (84.9%)</td><td>19</td>
+  <td>426 (84.5%)</td><td>29</td>
+  <td>428 (84.9%)</td><td>19</td>
+</tr>
+<tr>
+  <td class="l">10 on / 5 off / 10 on</td><td>1</td><td>422 (83.7%)</td>
+  <td>422 (83.7%)</td><td>0–24</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td>401 (79.6%)</td><td>24</td>
+</tr>
+<tr>
+  <td class="l">10 on / 5 off / 10 on</td><td>5</td><td>430 (85.3%)</td>
+  <td>430 (85.3%)</td><td>0–22</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td>426 (84.5%)</td><td>24</td>
+</tr>
+<tr>
+  <td class="l">10 on / 5 off / 10 on</td><td>10</td><td>436 (86.5%)</td>
+  <td>436 (86.5%)</td><td>0–18</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td class="miss">0 / 504 (0%) — no alert</td><td class="miss">no delay</td>
+  <td>426 (84.5%)</td><td>24</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Table B totals across all 7,560 windows</h3>
+<p>These rates are across the particular set of 15 pattern-and-magnitude combinations above. They are not a claim about real fault frequency.</p>
+<table>
+<thead>
+<tr>
+  <th class="l">Method</th>
+  <th>Alerts / 7,560</th>
+  <th>Detection rate</th>
+  <th>What that means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class="l">Immediate</td>
+  <td>6,413</td>
+  <td>84.8%</td>
+  <td class="l">Alerted on 84.8% of all fixed-size test windows</td>
+</tr>
+<tr>
+  <td class="l">Continuous20</td>
+  <td>2,521</td>
+  <td>33.3%</td>
+  <td class="l">Alerted on 33.3% of all fixed-size test windows</td>
+</tr>
+<tr>
+  <td class="l">Continuous30</td>
+  <td>1,237</td>
+  <td>16.4%</td>
+  <td class="l">Alerted on 16.4% of all fixed-size test windows</td>
+</tr>
+<tr>
+  <td class="l">20of30</td>
+  <td>3,777</td>
+  <td>50.0%</td>
+  <td class="l">Alerted on 50.0% of all fixed-size test windows</td>
+</tr>
+</tbody>
+</table>
+<p class="note">Immediate’s misses are almost entirely windows that never crossed the threshold. Persistence methods also miss many windows that did cross but never met their timing rule (e.g. spikes).</p>
+
+<!-- ========== TABLE C ========== -->
+<h2>Table C — Does expected load change how often +kW crosses? (30 min hosts)</h2>
+<p>This table answers: <em>on the same hosts used for the 30-minute continuous test, how often does a +1 / +5 / +10 kW increase cross the threshold when expected power is near zero versus already at least 1 kW?</em></p>
+<p>One host = one window. For Immediate, alerts equal crossings on these hosts.</p>
+
+<h3>How to read Table C columns</h3>
+<ul>
+  <li><strong>Expected power</strong> — hour’s median expected power before the addition.</li>
+  <li><strong>Hosts</strong> — number of windows in that group.</li>
+  <li><strong>+1 / +5 / +10 kW crossed</strong> — count and percent of those hosts where at least one injected minute crossed the threshold after that increase.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th class="l">Expected power</th>
+  <th>Hosts</th>
+  <th>+1 kW crossed</th>
+  <th>+5 kW crossed</th>
+  <th>+10 kW crossed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class="l">Below 1 kW (quiet / near floor)</td>
+  <td>406</td>
+  <td>399 / 406 (98.3%)</td>
+  <td>403 / 406 (99.3%)</td>
+  <td>404 / 406 (99.5%)</td>
+</tr>
+<tr>
+  <td class="l">At least 1 kW</td>
+  <td>98</td>
+  <td>24 / 98 (24.5%)</td>
+  <td>28 / 98 (28.6%)</td>
+  <td>35 / 98 (35.7%)</td>
+</tr>
+</tbody>
+</table>
+<p class="note">Near 0 kW, the threshold is often the 0.5 kW floor, so +1 kW already crosses most of the time. When expected power is already ≥ 1 kW, the same increase crosses far less often.</p>
+
+<p class="note" style="margin-top:28px">Source numbers: <code>POLICY_SUMMARY.md</code>, <code>policy_summary.csv</code>, and <code>fixed_magnitude_results/</code>.</p>
+
+</body>
+</html>
