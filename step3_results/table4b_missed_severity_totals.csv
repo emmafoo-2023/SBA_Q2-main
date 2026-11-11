@@ -1,0 +1,7 @@
+period,policy,cases_missed,estimated_missed_worth_investigating,estimated_missed_worth_investigating_per_monitored_week
+development,Continuous20,165,41.8,0.69
+development,Continuous30,171,47.8,0.79
+development,20of30,163,40.8,0.67
+validation,Continuous20,403,102.8,1.13
+validation,Continuous30,415,114.8,1.26
+validation,20of30,395,98.8,1.08

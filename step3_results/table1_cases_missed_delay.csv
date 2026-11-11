@@ -1,0 +1,9 @@
+period,policy,monitored_weeks,cases,cases_per_monitored_week,cases_missed,cases_missed_per_monitored_week,cases_missed_%_of_immediate,average_delay_min,median_delay_min,total_delay_min,total_delay_min_per_monitored_week
+development,Immediate,60.7,179,2.95,0,0.0,0.0,0.0,0.0,0,0.0
+development,Continuous20,60.7,14,0.23,165,2.72,92.2,19.4,19.0,271,4.5
+development,Continuous30,60.7,8,0.13,171,2.82,95.5,34.8,29.0,278,4.6
+development,20of30,60.7,16,0.26,163,2.69,91.1,23.5,19.0,376,6.2
+validation,Immediate,91.1,444,4.88,0,0.0,0.0,0.1,0.0,34,0.4
+validation,Continuous20,91.1,41,0.45,403,4.43,90.8,24.1,19.0,988,10.9
+validation,Continuous30,91.1,29,0.32,415,4.56,93.5,34.8,29.0,1009,11.1
+validation,20of30,91.1,49,0.54,395,4.34,89.0,23.5,19.0,1151,12.6

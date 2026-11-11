@@ -1,0 +1,5 @@
+policy,monitored_weeks,cases,cases_per_monitored_week,cases_missed,cases_missed_per_monitored_week,cases_missed_%_of_immediate,average_delay_min,median_delay_min,total_delay_min,total_delay_min_per_monitored_week
+Immediate,151.8,623,4.11,0,0.0,0.0,0.1,0.0,34,0.2
+Continuous20,151.8,55,0.36,568,3.74,91.2,22.9,19.0,1259,8.3
+Continuous30,151.8,37,0.24,586,3.86,94.1,34.8,29.0,1287,8.5
+20of30,151.8,65,0.43,558,3.68,89.6,23.5,19.0,1527,10.1

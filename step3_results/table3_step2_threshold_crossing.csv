@@ -1,0 +1,14 @@
+pattern,Immediate,Continuous20,Continuous30,20of30
+1-minute spike,"detected, 0 min",not detected,not detected,not detected
+5-minute spike,"detected, 0 min",not detected,not detected,not detected
+10 continuous minutes,"detected, 0 min",not detected,not detected,not detected
+20 continuous minutes,"detected, 0 min","detected, 19 min",not detected,"detected, 19 min"
+25 continuous minutes,"detected, 0 min","detected, 19 min",not detected,"detected, 19 min"
+30 continuous minutes,"detected, 0 min","detected, 19 min","detected, 29 min","detected, 19 min"
+60 continuous minutes,"detected, 0 min","detected, 19 min","detected, 29 min","detected, 19 min"
+"19 on, 1 off, 19 on","detected, 0 min",not detected,not detected,"detected, 20 min"
+"10 on, 5 off, 10 on","detected, 0 min",not detected,not detected,"detected, 24 min"
+2 on / 1 off for 30 minutes,"detected, 0 min",not detected,not detected,"detected, 28 min"
+3 on / 3 off pulses,"detected, 0 min",not detected,not detected,not detected
+5 on / 10 off cycles,"detected, 0 min",not detected,not detected,not detected
+patterns detected,12 of 12,4 of 12,2 of 12,7 of 12
