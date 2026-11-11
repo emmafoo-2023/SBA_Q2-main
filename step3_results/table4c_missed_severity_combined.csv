@@ -1,0 +1,4 @@
+policy,cases_missed,immediate_only_missed,interruption_tolerance_adds_case_missed,shorter_duration_adds_case_missed,immediate_only_missed_x_investigate_share,interruption_tolerance_adds_case_missed_x_investigate_share,shorter_duration_adds_case_missed_x_investigate_share,estimated_missed_worth_investigating,estimated_missed_worth_investigating_per_monitored_week
+Continuous20,568,558,10,0,139.5,5.0,0.0,144.5,0.95
+Continuous30,586,558,10,18,139.5,5.0,18.0,162.5,1.07
+20of30,558,558,0,0,139.5,0.0,0.0,139.5,0.92

@@ -1,0 +1,5 @@
+policy,plots_alerted,rated_investigate,rated_investigate_%,rated_monitor,rated_monitor_%,rated_uncertain,review_ids_alerted,control_windows_alerted
+Immediate,16,11,68.8,5,31.2,0,R01 R03 R04 R05 R06 R07 R08 R11 R12 R13 R15 R16 R17 R18 R19 R20,0
+Continuous20,8,8,100.0,0,0.0,0,R05 R06 R07 R13 R15 R17 R18 R20,0
+Continuous30,4,4,100.0,0,0.0,0,R05 R07 R13 R18,0
+20of30,12,10,83.3,2,16.7,0,R01 R04 R05 R06 R07 R08 R12 R13 R15 R17 R18 R20,0

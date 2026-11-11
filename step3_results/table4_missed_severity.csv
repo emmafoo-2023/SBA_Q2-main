@@ -1,0 +1,13 @@
+period,policy,review_group,cases_missed,cases_missed_per_monitored_week,abnormal_minutes_median,abnormal_minutes_max,longest_abnormal_run_median,longest_abnormal_run_max,reviewer_plots_in_group,reviewer_rated_investigate,investigate_share,estimated_missed_worth_investigating
+development,Continuous20,immediate_only,163,2.69,1.0,39,1.0,19,4,1,0.25,40.8
+development,Continuous20,interruption_tolerance_adds_case,2,0.03,68.0,97,12.0,13,4,2,0.5,1.0
+development,Continuous30,immediate_only,163,2.69,1.0,39,1.0,19,4,1,0.25,40.8
+development,Continuous30,shorter_duration_adds_case,6,0.1,22.5,43,22.0,25,4,4,1.0,6.0
+development,Continuous30,interruption_tolerance_adds_case,2,0.03,68.0,97,12.0,13,4,2,0.5,1.0
+development,20of30,immediate_only,163,2.69,1.0,39,1.0,19,4,1,0.25,40.8
+validation,Continuous20,immediate_only,395,4.34,3.0,58,3.0,19,4,1,0.25,98.8
+validation,Continuous20,interruption_tolerance_adds_case,8,0.09,35.5,53,16.5,19,4,2,0.5,4.0
+validation,Continuous30,immediate_only,395,4.34,3.0,58,3.0,19,4,1,0.25,98.8
+validation,Continuous30,shorter_duration_adds_case,12,0.13,27.5,110,24.0,28,4,4,1.0,12.0
+validation,Continuous30,interruption_tolerance_adds_case,8,0.09,35.5,53,16.5,19,4,2,0.5,4.0
+validation,20of30,immediate_only,395,4.34,3.0,58,3.0,19,4,1,0.25,98.8
