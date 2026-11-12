@@ -1,0 +1,14 @@
+Review development/validation only; final evaluation is not part of this packet.
+Give reviewers the plots and review_form.csv BEFORE the answer key.
+Ratings: investigate / monitor / uncertain. These are judgements, not fault labels.
+Each reviewer independently records the visible pattern, magnitude, duration and recurrence evidence.
+Do not infer confirmed faults, occupancy, closure or avoidable energy from power alone.
+Check official holidays and legitimate schedule changes before interpreting low power.
+Expected power +/- threshold is a statistical comparison band, not a physical or comfort limit.
+Use longer histories and zone temperature when needed; this packet contains power only.
+All units in Zone 1 share zone-level temperature evidence, not unit-specific performance evidence.
+No-excursion windows are not assumed fault-free. Disagreement can reveal a weak baseline.
+The sample is stratified, small and enriched for disagreement: do not estimate population precision from it.
+Case boundaries use 15-minute grouping for comparison, not confirmed incident boundaries.
+Elapsed time from first power excursion is not confirmed-fault detection delay.
+Choose policy settings using development/validation; keep final evaluation separate.
